@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perapera - Speak Japanese from Day 1 | AI Speaking Practice App</title>
+  <meta name="description" content="Perapera is an AI-powered Japanese speaking practice app for beginners and intermediate learners. Translate English prompts aloud, shadow native audio, and get instant AI feedback on grammar, naturalness, and politeness. Free 3-day trial.">
+  <meta name="keywords" content="learn Japanese speaking, Japanese pronunciation app, AI Japanese tutor, Japanese shadowing app, instant translation Japanese, speak Japanese fluently, Japanese conversation practice">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Perapera - Speak Japanese from Day 1">
+  <meta property="og:description" content="AI-powered Japanese speaking practice. Translate aloud, shadow natives, get instant AI feedback.">
+  <meta property="og:url" content="https://perapera.today/">
+  <meta property="og:image" content="https://perapera.today/og-image.png">
+  <meta property="og:site_name" content="Perapera">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perapera - Speak Japanese from Day 1">
+  <meta name="twitter:description" content="AI-powered Japanese speaking practice for beginners.">
+  <meta name="twitter:image" content="https://perapera.today/og-image.png">
+
+  <link rel="canonical" href="https://perapera.today/">
+  <link rel="alternate" type="application/json" href="https://perapera.today/llms.txt">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Perapera",
+    "url": "https://perapera.today",
+    "logo": "https://perapera.today/logo.png",
+    "email": "support@perapera.today",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Perapera",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "EducationalApplication",
+    "applicationSubCategory": "Language Learning",
+    "description": "AI-powered Japanese speaking practice app. Translate English prompts into spoken Japanese, shadow native audio, write a Japanese diary, and get instant AI feedback on grammar, naturalness, and politeness.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "price": "7.99",
+        "priceCurrency": "USD",
+        "description": "5 sessions per day, 2 shadowing evaluations per day. 3-day free trial."
+      },
+      {
+        "@type": "Offer",
+        "name": "Advanced",
+        "price": "11.99",
+        "priceCurrency": "USD",
+        "description": "10 sessions per day, 4 shadowing evaluations per day."
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Perapera"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Perapera?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Perapera is a mobile app that helps English speakers learn to speak Japanese from day one. You see an English prompt, say the Japanese translation aloud, and get an AI-powered score and correction in seconds. It also offers shadowing practice with native audio and a Japanese diary feature."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Perapera different from Duolingo or Pimsleur?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Duolingo focuses heavily on tapping and matching, with limited speaking practice. Pimsleur is audio-only with no real-time feedback. Perapera is built around speaking: every session forces you to produce Japanese aloud, and an LLM grades your answer on clarity, grammar, naturalness, and politeness, then corrects mistakes word by word."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know any Japanese to start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The Level 1 prompts are basic greetings like 'Good morning' and 'Thank you'. You can practice with kanji + furigana, full hiragana, or romaji depending on what you can read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a free trial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Standard plan includes a 3-day free trial. You can cancel anytime during the trial in your device subscription settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the AI scoring work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your spoken answer is transcribed by your device's on-device speech recognition (no audio leaves your phone). The text is then sent to a large language model that scores it on four axes — clarity, grammar, naturalness, politeness — and returns specific corrections plus a politeness note."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What devices are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "iPhone (iOS 16 or later) and Android (planned). The app uses Apple's built-in Speech Recognition for accurate Japanese transcription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my voice data stored?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Speech recognition runs on your device. Only the transcribed text is sent to our servers for grading. We do not store raw audio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I cancel my subscription anytime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Cancel at any time in iOS Settings → Apple ID → Subscriptions, or in the Google Play Store. Cancellation takes effect at the end of the current billing period."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #4F46E5;
+      --primary-faint: #f0eeff;
+      --primary-dark: #3730A3;
+      --accent: #EC4899;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --surface: #f9fafb;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary); text-decoration: none; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+    .nav-links a { color: var(--text-sub); }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary); color: #fff !important;
+      padding: 8px 16px; border-radius: 8px; font-weight: 600;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+    @media (max-width: 640px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* Hero */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--primary-faint) 0%, #ffffff 100%);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 800px; margin: 0 auto 20px;
+    }
+    .hero h1 .highlight { color: var(--primary); }
+    .hero .sub {
+      font-size: clamp(16px, 2.4vw, 20px);
+      color: var(--text-sub);
+      max-width: 600px; margin: 0 auto 32px;
+    }
+    .cta-row {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px; font-weight: 700;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: #fff; color: var(--primary); border: 1.5px solid var(--primary); }
+    .hero-note { font-size: 13px; color: var(--text-sub); }
+
+    /* Sections */
+    section { padding: 80px 24px; max-width: 1080px; margin: 0 auto; }
+    section h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    section .lead {
+      text-align: center; font-size: 17px; color: var(--text-sub);
+      max-width: 640px; margin: 0 auto 56px;
+    }
+
+    /* What is */
+    .what-is { background: var(--surface); border-radius: 24px; padding: 48px 32px; }
+    .what-is h2 { text-align: left; }
+    .what-is p { font-size: 17px; color: #374151; margin-bottom: 16px; max-width: 720px; }
+
+    /* Features grid */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
+    .feature {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+    }
+    .feature .icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--primary-faint); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800; margin-bottom: 16px;
+    }
+    .feature h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .feature p { color: var(--text-sub); font-size: 15px; }
+
+    /* Comparison table */
+    .compare-wrap { overflow-x: auto; }
+    table.compare {
+      width: 100%; border-collapse: collapse; min-width: 540px;
+      background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    table.compare th, table.compare td {
+      padding: 16px; text-align: left; font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.compare th { background: var(--surface); font-weight: 700; font-size: 13px; }
+    table.compare td.yes { color: #059669; font-weight: 600; }
+    table.compare td.no { color: #ef4444; }
+    table.compare .col-perapera { background: var(--primary-faint); color: var(--primary); font-weight: 700; }
+
+    /* How it works */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 768px) { .steps { grid-template-columns: 1fr; } }
+    .step { text-align: center; }
+    .step .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--primary); color: #fff; font-weight: 800; font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { color: var(--text-sub); font-size: 15px; }
+
+    /* Pricing */
+    .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 760px; margin: 0 auto; }
+    @media (max-width: 640px) { .pricing { grid-template-columns: 1fr; } }
+    .plan {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 32px 28px; position: relative;
+    }
+    .plan.recommended { border-color: var(--primary); }
+    .plan .badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--primary); color: #fff;
+      padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .plan h3 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .plan .price { font-size: 32px; font-weight: 800; margin-bottom: 4px; }
+    .plan .price span { font-size: 14px; color: var(--text-sub); font-weight: 500; }
+    .plan .trial { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
+    .plan ul { list-style: none; margin-bottom: 24px; }
+    .plan li { padding: 6px 0; font-size: 14px; color: #374151; }
+    .plan li::before { content: "✓ "; color: var(--primary); font-weight: 700; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      background: #fff; border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 12px; overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 16px;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-item summary::after { content: "+"; font-size: 22px; color: var(--text-sub); }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item .answer {
+      padding: 0 24px 20px; color: #374151; font-size: 15px; line-height: 1.7;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: var(--primary); color: #fff;
+      border-radius: 24px; padding: 60px 32px; text-align: center;
+      margin: 40px auto;
+    }
+    .cta-section h2 { color: #fff; }
+    .cta-section .lead { color: rgba(255,255,255,0.85); }
+    .cta-section .btn-primary { background: #fff; color: var(--primary); }
+
+    /* Footer */
+    footer {
+      background: var(--surface); padding: 40px 24px; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: var(--text-sub); font-size: 14px; }
+    .footer-meta { color: var(--text-sub); font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">Perapera</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cta" class="nav-cta">Try free</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Speak Japanese <span class="highlight">from Day 1.</span></h1>
+    <p class="sub">Translate English prompts aloud, shadow native audio, and get instant AI feedback on your Japanese — grammar, naturalness, and politeness, all scored in seconds.</p>
+    <div class="cta-row">
+      <a href="#cta" class="btn btn-primary">Start 3-day free trial</a>
+      <a href="#how" class="btn btn-secondary">How it works</a>
+    </div>
+    <p class="hero-note">No credit card to view the app. Cancel anytime.</p>
+  </header>
+
+  <section id="what">
+    <div class="what-is">
+      <h2>What is Perapera?</h2>
+      <p><strong>Perapera</strong> ("ペラペラ" — Japanese for "speaking fluently") is a mobile app that helps English speakers learn to speak Japanese from the very first session.</p>
+      <p>Unlike apps that focus on tapping or matching, Perapera makes you <strong>produce Japanese aloud</strong> in every single session. An AI grades each answer on four axes — clarity, grammar, naturalness, politeness — and corrects your mistakes word by word.</p>
+      <p>Built for adult learners who want practical, conversational Japanese for travel, work, anime, and daily life — not textbook drills.</p>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Three ways to practice</h2>
+    <p class="lead">Each mode targets a different speaking skill. Mix and match based on your goals.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Instant Translation</h3>
+        <p>See an English prompt. Speak the Japanese translation in 15 seconds or less. AI grades you on clarity, grammar, naturalness, and politeness — and shows the corrected version side by side.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎧</div>
+        <h3>Shadowing</h3>
+        <p>Listen to a native model phrase. Shadow it back. Get scored on similarity, fluency, and pronunciation. Build the muscle memory that textbook learners never develop.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📓</div>
+        <h3>Japanese Diary</h3>
+        <p>Speak or type your day in Japanese. AI rewrites it into natural phrasing and explains what changed. Turn random thoughts into real Japanese reps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="lead">A typical 5-question session takes about 5 minutes.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Pick a category</h3>
+        <p>Daily, Travel, Pop Culture, Work, or School. Each has 5 difficulty levels.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Speak Japanese aloud</h3>
+        <p>Read the English prompt, then say the Japanese translation. Recording auto-stops on silence.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Get AI feedback</h3>
+        <p>Receive scores, corrections, a politeness note, and a coaching tip — instantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare">
+    <h2>Why Perapera over other apps?</h2>
+    <p class="lead">Most language apps don't make you actually speak. Perapera does — every session.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-perapera">Perapera</th>
+            <th>Duolingo</th>
+            <th>Pimsleur</th>
+            <th>Tutor (italki)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Speak in every session</td>
+            <td class="col-perapera yes">Yes</td>
+            <td class="no">Optional</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Real-time AI grading</td>
+            <td class="col-perapera yes">Yes (4-axis)</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="yes">Human feedback</td>
+          </tr>
+          <tr>
+            <td>Word-level corrections</td>
+            <td class="col-perapera yes">Yes</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Cost per month</td>
+            <td class="col-perapera yes">$7.99</td>
+            <td>$13</td>
+            <td>$15+</td>
+            <td>$80+</td>
+          </tr>
+          <tr>
+            <td>No scheduling needed</td>
+            <td class="col-perapera yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="no">Required</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Simple pricing</h2>
+    <p class="lead">Start with a free trial. Cancel anytime.</p>
+    <div class="pricing">
+      <div class="plan recommended">
+        <div class="badge">3-DAY FREE TRIAL</div>
+        <h3>Standard</h3>
+        <div class="price">$7.99 <span>/ month</span></div>
+        <p class="trial">Free for 3 days, then auto-renews</p>
+        <ul>
+          <li>5 instant-translation sessions/day</li>
+          <li>2 shadowing AI evaluations/day</li>
+          <li>Daily Japanese diary entry</li>
+          <li>Furigana / Hiragana / Romaji modes</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary" style="width: 100%; text-align: center;">Start free trial</a>
+      </div>
+      <div class="plan">
+        <h3>Advanced</h3>
+        <div class="price">$11.99 <span>/ month</span></div>
+        <p class="trial">For serious learners</p>
+        <ul>
+          <li>10 sessions/day</li>
+          <li>4 shadowing evaluations/day</li>
+          <li>Daily Japanese diary entry</li>
+          <li>Furigana / Hiragana / Romaji modes</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="#cta" class="btn btn-secondary" style="width: 100%; text-align: center;">Get Advanced</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is Perapera?</summary>
+        <div class="answer">Perapera is a mobile app that helps English speakers learn to speak Japanese from day one. You see an English prompt, say the Japanese translation aloud, and get an AI-powered score and correction in seconds. It also offers shadowing practice with native audio and a Japanese diary feature.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How is Perapera different from Duolingo or Pimsleur?</summary>
+        <div class="answer">Duolingo focuses heavily on tapping and matching, with limited speaking practice. Pimsleur is audio-only with no real-time feedback. Perapera is built around speaking: every session forces you to produce Japanese aloud, and an LLM grades your answer on clarity, grammar, naturalness, and politeness, then corrects mistakes word by word.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to know any Japanese to start?</summary>
+        <div class="answer">No. The Level 1 prompts are basic greetings like "Good morning" and "Thank you". You can practice with kanji + furigana, full hiragana, or romaji depending on what you can read.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a free trial?</summary>
+        <div class="answer">Yes. The Standard plan includes a 3-day free trial. You can cancel anytime during the trial in your device subscription settings.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How does the AI scoring work?</summary>
+        <div class="answer">Your spoken answer is transcribed by your device's on-device speech recognition (no audio leaves your phone). The text is then sent to a large language model that scores it on four axes — clarity, grammar, naturalness, politeness — and returns specific corrections plus a politeness note.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What devices are supported?</summary>
+        <div class="answer">iPhone (iOS 16 or later) and Android (planned). The app uses Apple's built-in Speech Recognition for accurate Japanese transcription.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is my voice data stored?</summary>
+        <div class="answer">No. Speech recognition runs on your device. Only the transcribed text is sent to our servers for grading. We do not store raw audio.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I cancel my subscription anytime?</summary>
+        <div class="answer">Yes. Cancel at any time in iOS Settings → Apple ID → Subscriptions, or in the Google Play Store. Cancellation takes effect at the end of the current billing period.</div>
+      </details>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="cta-section">
+      <h2>Start speaking Japanese today.</h2>
+      <p class="lead">3 days free. No credit card to download. Cancel anytime.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary">Download on the App Store</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+      <a href="llms.txt">llms.txt</a>
+    </div>
+    <p class="footer-meta">&copy; 2026 Perapera. Made with care for Japanese learners.</p>
+  </footer>
+
+</body>
+</html>
