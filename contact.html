@@ -26,50 +26,160 @@
     .lead { font-size: 16px; color: #4b5563; margin-bottom: 40px; }
     h2 {
       font-size: 18px; font-weight: 700;
-      margin-top: 32px; margin-bottom: 8px;
+      margin-top: 32px; margin-bottom: 12px;
       color: #4F46E5;
     }
     p { font-size: 15px; color: #374151; margin-bottom: 14px; }
-    .email-card {
-      display: block;
-      background: #f8f7ff;
-      border: 1px solid #e0deff;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin: 16px 0 32px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: 600;
-      color: #4F46E5;
-    }
-    .email-card:hover { background: #eeebff; text-decoration: none; }
     ul { padding-left: 22px; margin-bottom: 14px; }
     li { font-size: 15px; color: #374151; margin-bottom: 6px; }
+
+    /* Form */
+    form { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label { font-size: 13px; font-weight: 600; color: #374151; }
+    input[type="text"], input[type="email"], textarea, select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #1a1a2e;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #4F46E5;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    .honeypot { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    button[type="submit"] {
+      background: #4F46E5;
+      color: #fff;
+      border: none;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s;
+    }
+    button[type="submit"]:hover { background: #3730A3; }
+    button[type="submit"]:disabled { background: #9ca3af; cursor: not-allowed; }
+    .status { font-size: 14px; padding: 12px 14px; border-radius: 8px; margin-top: 8px; }
+    .status.success { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
+    .status.error { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+    .hint { font-size: 12px; color: #6b7280; }
   </style>
 </head>
 <body>
   <div class="container">
     <a href="index.html" class="back">&larr; Back to home</a>
     <h1>Contact</h1>
-    <p class="lead">We'd love to hear from you. Reach out for support, feedback, or partnership inquiries.</p>
+    <p class="lead">We'd love to hear from you. Send us a message via the form below or email us directly.</p>
+
+    <h2>Send a message</h2>
+    <form id="contact-form">
+      <div class="field">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required maxlength="200" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required maxlength="200" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" maxlength="200">
+      </div>
+      <div class="field">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required maxlength="10000"></textarea>
+        <span class="hint">Please include your account email, device model, and a clear description.</span>
+      </div>
+      <!-- Honeypot: spam bot trap -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Leave this field blank</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" id="submit-btn">Send message</button>
+      <div id="status" class="status" style="display:none;"></div>
+    </form>
 
     <h2>Email</h2>
-    <a class="email-card" href="mailto:support@perapera.today">support@perapera.today</a>
+    <p>If you prefer email, write to <a href="mailto:support@perapera.today">support@perapera.today</a>. We reply within 2 business days (Japan time).</p>
 
-    <h2>What to include in your message</h2>
-    <ul>
-      <li>Your account email (so we can locate your data)</li>
-      <li>Device model and OS version (e.g., iPhone 15 Pro, iOS 17.5)</li>
-      <li>App version (visible at the bottom of the My Page screen)</li>
-      <li>A clear description of the issue or request</li>
-      <li>Screenshots, if applicable</li>
-    </ul>
-
-    <h2>Response time</h2>
-    <p>We reply within 2 business days (Japan time). For urgent billing or refund issues, please contact <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">Apple</a> or <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play</a> directly, as we cannot process refunds on our side.</p>
+    <h2>Refunds and billing</h2>
+    <p>For refund or billing issues, please contact <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">Apple</a> or <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play</a> directly, as we cannot process refunds on our side.</p>
 
     <h2>Other resources</h2>
     <p><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></p>
   </div>
+
+  <script>
+    // ========================================================================
+    // Supabase REST API へのお問い合わせ送信
+    // anon key は公開して問題ないキー (RLS で保護)
+    // ========================================================================
+    const SUPABASE_URL = 'https://yzsvuukhisgefhfmduzb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6c3Z1dWtoaXNnZWZoZm1kdXpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2MDcyMTcsImV4cCI6MjA2MTE4MzIxN30.OLuArEwlqYTsClkbvnbqyqQuCwY8L2_h2T-mf7RUKMU';
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function showStatus(msg, kind) {
+      status.textContent = msg;
+      status.className = 'status ' + kind;
+      status.style.display = 'block';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      status.style.display = 'none';
+
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        subject: form.subject.value.trim() || null,
+        message: form.message.value.trim(),
+        user_agent: navigator.userAgent,
+        source: 'lp',
+        honeypot: form.website.value.trim() || null,
+      };
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/contact_messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          showStatus('Thank you! Your message has been received. We will reply within 2 business days.', 'success');
+          form.reset();
+        } else {
+          const text = await res.text();
+          console.error('Supabase error:', res.status, text);
+          showStatus('Something went wrong. Please try again or email us directly at support@perapera.today.', 'error');
+        }
+      } catch (err) {
+        console.error('Network error:', err);
+        showStatus('Network error. Please check your connection or email us directly at support@perapera.today.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  </script>
 </body>
 </html>
