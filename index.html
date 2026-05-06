@@ -270,139 +270,87 @@
       background: rgba(255, 255, 255, 0.64);
     }
 
-    .phone-stage {
+    .hero-art {
       position: relative;
-      display: flex;
-      justify-content: center;
-      min-height: 640px;
-    }
-    .phone {
-      width: min(100%, 360px);
-      min-height: 640px;
-      padding: 14px;
-      border-radius: 38px;
-      background: #1c252b;
-      box-shadow: var(--shadow);
-    }
-    .screen {
-      min-height: 612px;
-      border-radius: 28px;
-      background: #fffaf1;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-    }
-    .status {
-      height: 32px;
-      display: flex;
+      min-height: 540px;
+      display: grid;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 22px;
-      font-size: 12px;
-      font-weight: 900;
-      color: #24313a;
     }
-    .app-top {
-      padding: 18px 20px 16px;
-      background: linear-gradient(135deg, #fff5df, #e5f6f2);
-      border-bottom: 1px solid rgba(23, 32, 38, 0.08);
-    }
-    .app-label { color: var(--muted); font-size: 12px; font-weight: 900; text-transform: uppercase; }
-    .app-top h2 {
-      margin-top: 6px;
-      font-size: 25px;
-      line-height: 1.12;
-      letter-spacing: 0;
-    }
-    .prompt {
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.74);
+    .brand-showcase {
+      position: relative;
+      min-height: 500px;
+      padding: 34px;
       border: 1px solid rgba(23, 32, 38, 0.1);
-      font-weight: 900;
+      border-radius: 8px;
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(241, 250, 248, 0.86)),
+        #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-    .prompt small {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
+    .brand-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(22, 138, 134, 0.14);
+      border-radius: 8px;
+      pointer-events: none;
     }
-    .record-panel { padding: 18px 20px; }
-    .mic {
-      width: 112px;
-      height: 112px;
-      margin: 10px auto 16px;
+    .hero-icon {
+      width: 144px;
+      height: 144px;
+      border-radius: 28px;
+      box-shadow: 0 22px 50px rgba(23, 32, 38, 0.16);
+    }
+    .concept-stack {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .concept-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid rgba(23, 32, 38, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+    }
+    .concept-card:nth-child(2) { margin-left: 34px; }
+    .concept-card:nth-child(3) { margin-left: 68px; }
+    .mini-mark {
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
-      border-radius: 50%;
-      background: var(--red);
+      border-radius: 8px;
+      background: var(--ink);
       color: #fff;
-      font-size: 24px;
       font-weight: 950;
-      box-shadow: 0 16px 32px rgba(240, 79, 62, 0.24);
     }
-    .wave {
-      display: flex;
-      justify-content: center;
-      align-items: end;
-      gap: 5px;
-      height: 34px;
-      margin-bottom: 18px;
-    }
-    .wave i {
+    .concept-card b {
       display: block;
-      width: 6px;
-      border-radius: 99px;
-      background: var(--teal);
+      color: var(--ink);
+      line-height: 1.2;
     }
-    .wave i:nth-child(1) { height: 14px; }
-    .wave i:nth-child(2) { height: 24px; }
-    .wave i:nth-child(3) { height: 32px; }
-    .wave i:nth-child(4) { height: 20px; }
-    .wave i:nth-child(5) { height: 28px; }
-    .feedback {
-      padding: 14px;
-      border-radius: 8px;
-      background: #fff;
-      border: 1px solid rgba(23, 32, 38, 0.1);
-      box-shadow: 0 10px 22px rgba(23, 32, 38, 0.08);
-    }
-    .score-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-weight: 900;
-    }
-    .score {
-      color: #fff;
-      background: var(--green);
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 13px;
-    }
-    .correction {
-      color: #32414a;
-      font-size: 14px;
-    }
-    .correction strong { color: var(--red); }
-    .float-card {
-      position: absolute;
-      width: 178px;
-      padding: 14px;
-      border: 1px solid rgba(23, 32, 38, 0.12);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 18px 42px rgba(23, 32, 38, 0.12);
+    .concept-card span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
       font-size: 13px;
       font-weight: 800;
-      backdrop-filter: blur(14px);
     }
-    .float-card b { display: block; margin-bottom: 4px; color: var(--blue); }
-    .float-left { left: -10px; top: 76px; }
-    .float-right { right: -14px; bottom: 92px; }
+    .art-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
 
     section { padding: 78px 0; }
     .section-head {
@@ -713,9 +661,7 @@
       .download-band {
         grid-template-columns: 1fr;
       }
-      .phone-stage { min-height: auto; }
-      .float-left { left: 0; }
-      .float-right { right: 0; }
+      .hero-art { min-height: auto; }
       .proof-grid,
       .steps {
         grid-template-columns: repeat(2, 1fr);
@@ -730,13 +676,13 @@
       .nav-links a:not(.nav-cta) { display: none; }
       .hero { padding-top: 42px; }
       .hero-grid { gap: 36px; }
-      .phone {
-        width: 100%;
-        max-width: 340px;
-        min-height: 600px;
+      .brand-showcase { min-height: auto; padding: 24px; }
+      .hero-icon { width: 112px; height: 112px; border-radius: 22px; }
+      .concept-card,
+      .concept-card:nth-child(2),
+      .concept-card:nth-child(3) {
+        margin-left: 0;
       }
-      .screen { min-height: 572px; }
-      .float-card { display: none; }
       .proof-grid,
       .steps,
       .pricing {
@@ -787,33 +733,34 @@
           </div>
         </div>
 
-        <div class="phone-stage" aria-label="Perapera app preview">
-          <div class="float-card float-left"><b>Naturalness</b> "Arigatou gozaimasu" fits polite situations.</div>
-          <div class="phone">
-            <div class="screen">
-              <div class="status"><span>9:41</span><span>5G</span></div>
-              <div class="app-top">
-                <div class="app-label">Daily conversation</div>
-                <h2>Say this in Japanese</h2>
-                <div class="prompt">
-                  <small>Prompt</small>
-                  Thank you for helping me today.
+        <div class="hero-art" aria-label="Perapera brand and learning flow">
+          <div class="brand-showcase">
+            <img class="hero-icon" src="app-icon.png" alt="Perapera app icon">
+            <div class="concept-stack">
+              <div class="concept-card">
+                <div class="mini-mark">1</div>
+                <div>
+                  <b>Speak from a real prompt</b>
+                  <span>Travel, daily life, work, school, and culture</span>
                 </div>
               </div>
-              <div class="record-panel">
-                <div class="mic" aria-hidden="true">REC</div>
-                <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="feedback">
-                  <div class="score-line">
-                    <span>AI feedback</span>
-                    <span class="score">92</span>
-                  </div>
-                  <p class="correction">Good meaning. Try: <strong>Kyou wa tetsudatte kurete arigatou gozaimasu.</strong></p>
+              <div class="concept-card">
+                <div class="mini-mark">2</div>
+                <div>
+                  <b>Hear natural Japanese</b>
+                  <span>Shadow native phrases and build rhythm</span>
+                </div>
+              </div>
+              <div class="concept-card">
+                <div class="mini-mark">3</div>
+                <div>
+                  <b>Improve with feedback</b>
+                  <span>Grammar, naturalness, clarity, and politeness</span>
                 </div>
               </div>
             </div>
+            <p class="art-note">Conceptual overview of the learning flow. Actual app screens may vary.</p>
           </div>
-          <div class="float-card float-right"><b>Politeness note</b> Use "gozaimasu" when speaking to teachers, coworkers, or people you just met.</div>
         </div>
       </div>
     </header>
