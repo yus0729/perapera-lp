@@ -604,7 +604,7 @@
     }
     .download-band {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) 390px;
       gap: 24px;
       align-items: center;
       padding: 34px;
@@ -627,11 +627,82 @@
       font-size: 17px;
       font-weight: 700;
     }
-    .download-band .btn {
-      min-width: 220px;
+    .waitlist-form {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+    .waitlist-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+    .waitlist-form input,
+    .waitlist-form select {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.34);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+    }
+    .waitlist-form input:focus,
+    .waitlist-form select:focus {
+      outline: none;
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
+    }
+    .waitlist-form button {
+      min-height: 50px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 8px;
       background: #fff;
       color: var(--ink);
-      box-shadow: none;
+      font: inherit;
+      font-weight: 950;
+      cursor: pointer;
+    }
+    .waitlist-form button:disabled {
+      cursor: not-allowed;
+      opacity: 0.68;
+    }
+    .waitlist-note {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .waitlist-status {
+      display: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .waitlist-status.success {
+      display: block;
+      background: rgba(236, 253, 245, 0.94);
+      color: #065f46;
+    }
+    .waitlist-status.error {
+      display: block;
+      background: rgba(254, 242, 242, 0.96);
+      color: #991b1b;
+    }
+    .honeypot {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
 
     footer {
@@ -689,6 +760,7 @@
         grid-template-columns: 1fr;
       }
       .proof-item { min-height: auto; }
+      .waitlist-row { grid-template-columns: 1fr; }
       section { padding: 58px 0; }
       .audience-main,
       .language-panel,
@@ -711,7 +783,7 @@
           <a href="#practice">Practice</a>
           <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
-          <a href="#download" class="nav-cta">Try free</a>
+          <a href="#download" class="nav-cta">Join waitlist</a>
         </div>
       </div>
     </nav>
@@ -723,7 +795,7 @@
           <h1>Talk your way into Japanese.</h1>
           <p class="hero-copy">Perapera is for learners around the world who do not just want to recognize Japanese. They want to say it out loud, hear how it should sound, and get clear feedback right away.</p>
           <div class="cta-row">
-            <a href="#download" class="btn btn-primary">Start 3-day free trial</a>
+            <a href="#download" class="btn btn-primary">Join waitlist</a>
             <a href="#practice" class="btn btn-secondary">See practice modes</a>
           </div>
           <div class="trust-row" aria-label="Product highlights">
@@ -892,7 +964,7 @@
                 <li>Furigana, hiragana, and romaji modes</li>
                 <li>Cancel anytime</li>
               </ul>
-              <a href="#download" class="btn btn-primary">Start free trial</a>
+              <a href="#download" class="btn btn-primary">Join waitlist</a>
             </div>
             <div class="plan">
               <div class="badge">3-day free trial</div>
@@ -906,7 +978,7 @@
                 <li>Furigana, hiragana, and romaji modes</li>
                 <li>Cancel anytime</li>
               </ul>
-              <a href="#download" class="btn btn-secondary">Start free trial</a>
+              <a href="#download" class="btn btn-secondary">Join waitlist</a>
             </div>
           </div>
         </div>
@@ -946,10 +1018,30 @@
         <div class="container">
           <div class="download-band">
             <div>
-              <h2>Open the app and say your first Japanese sentence today.</h2>
-              <p>Try Perapera free for 3 days. Practice a few minutes, hear the difference, and keep the phrases that matter to you.</p>
+              <h2>Be first to speak with Perapera.</h2>
+              <p>Join the waitlist for early access to AI Japanese speaking practice. We will only email you about launch and early access.</p>
             </div>
-            <a href="#" class="btn">Download on the App Store</a>
+            <form id="waitlist-form" class="waitlist-form">
+              <div class="waitlist-row">
+                <input type="email" id="waitlist-email" name="email" placeholder="Email address" maxlength="320" autocomplete="email" required>
+                <button type="submit" id="waitlist-submit">Join waitlist</button>
+              </div>
+              <select id="waitlist-goal" name="goal" aria-label="Why are you learning Japanese?">
+                <option value="">Why are you learning Japanese? (optional)</option>
+                <option value="travel">Travel</option>
+                <option value="school">School</option>
+                <option value="work">Work</option>
+                <option value="anime-culture">Anime and culture</option>
+                <option value="daily-conversation">Daily conversation</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="honeypot" aria-hidden="true">
+                <label for="waitlist-website">Leave this field blank</label>
+                <input type="text" id="waitlist-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <p class="waitlist-note">No spam. Unsubscribe anytime.</p>
+              <div id="waitlist-status" class="waitlist-status" role="status"></div>
+            </form>
           </div>
         </div>
       </section>
@@ -967,5 +1059,69 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    const SUPABASE_URL = 'https://yzsvuukhisgefhfmduzb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6c3Z1dWtoaXNnZWZoZm1kdXpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2MDcyMTcsImV4cCI6MjA2MTE4MzIxN30.OLuArEwlqYTsClkbvnbqyqQuCwY8L2_h2T-mf7RUKMU';
+
+    const waitlistForm = document.getElementById('waitlist-form');
+    const waitlistStatus = document.getElementById('waitlist-status');
+    const waitlistSubmit = document.getElementById('waitlist-submit');
+
+    function showWaitlistStatus(message, kind) {
+      waitlistStatus.textContent = message;
+      waitlistStatus.className = 'waitlist-status ' + kind;
+    }
+
+    waitlistForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      waitlistSubmit.disabled = true;
+      waitlistSubmit.textContent = 'Joining...';
+      waitlistStatus.className = 'waitlist-status';
+      waitlistStatus.textContent = '';
+
+      const email = waitlistForm.email.value.trim().toLowerCase();
+      const goal = waitlistForm.goal.value || null;
+      const honeypot = waitlistForm.website.value.trim() || null;
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_entries`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify({
+            email,
+            goal,
+            honeypot,
+            source: 'lp',
+            user_agent: navigator.userAgent,
+            referrer: document.referrer || null,
+          }),
+        });
+
+        if (res.ok) {
+          showWaitlistStatus("You're on the list. We'll email you when early access opens.", 'success');
+          waitlistForm.reset();
+        } else if (res.status === 409) {
+          showWaitlistStatus("You're already on the list. We'll be in touch when early access opens.", 'success');
+          waitlistForm.reset();
+        } else {
+          const text = await res.text();
+          console.error('Waitlist error:', res.status, text);
+          showWaitlistStatus('Something went wrong. Please try again in a moment.', 'error');
+        }
+      } catch (err) {
+        console.error('Waitlist network error:', err);
+        showWaitlistStatus('Network error. Please check your connection and try again.', 'error');
+      } finally {
+        waitlistSubmit.disabled = false;
+        waitlistSubmit.textContent = 'Join waitlist';
+      }
+    });
+  </script>
 </body>
 </html>
