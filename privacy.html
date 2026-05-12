@@ -39,52 +39,63 @@
   <div class="container">
     <a href="index.html" class="back">&larr; Back to home</a>
     <h1>Privacy Policy</h1>
-    <p class="date">Last updated: April 30, 2026</p>
+    <p class="date">Last updated: May 12, 2026</p>
 
-    <p>Perapera ("the App", "we", "us", "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+    <p>Perapera ("the App", "we", "us", "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains what information we collect, how we use it, who we share it with, and your rights regarding that information.</p>
 
     <h2>1. Information We Collect</h2>
     <ul>
       <li><strong>Account information:</strong> Email address and display name received via Google or Apple authentication.</li>
-      <li><strong>Practice data:</strong> Your session history, scores, corrections, and saved favorite prompts.</li>
-      <li><strong>Voice input:</strong> Spoken audio is processed on-device by Apple's Speech Recognition framework. We do not store raw audio on our servers; only the transcribed text is sent for grading.</li>
-      <li><strong>Usage statistics:</strong> Number of sessions, streak count, and other aggregate metrics needed to operate the App.</li>
+      <li><strong>Practice data:</strong> Your session history, AI scores, corrections, shadowing pronunciation results, and saved favorite prompts.</li>
+      <li><strong>Voice input:</strong> Audio you record during shadowing practice and your spoken Japanese answers during "Instant Translation". Refer to Section 3 for exactly how this audio is processed.</li>
+      <li><strong>Text input:</strong> Japanese diary entries you write or dictate.</li>
+      <li><strong>Usage statistics:</strong> Number of sessions, streak count, daily completion goals, and other aggregate metrics needed to operate the App.</li>
       <li><strong>Subscription status:</strong> Plan tier, trial status, and renewal dates managed via Adapty / Apple's StoreKit / Google Play Billing.</li>
     </ul>
 
     <h2>2. How We Use Information</h2>
     <ul>
-      <li>To provide the App's core features (practice sessions, AI grading, history, favorites).</li>
+      <li>To provide the App's core features (practice sessions, AI grading, shadowing scoring, diary correction, history, favorites).</li>
       <li>To authenticate users and manage accounts.</li>
       <li>To improve service quality and develop new features.</li>
       <li>To process subscription purchases and renewals.</li>
       <li>To send opt-in push notifications (e.g., daily practice reminders).</li>
     </ul>
+    <p>We do <strong>not</strong> use your data for advertising, and we do <strong>not</strong> sell your personal data to third parties.</p>
 
-    <h2>3. Third-Party Services</h2>
-    <p>The App relies on the following third-party providers. Please review their privacy policies for details:</p>
+    <h2>3. AI Processing and Data Shared with Third-Party AI Services</h2>
+    <p>Perapera uses third-party AI services to generate your practice feedback. Before any AI feature is used for the first time, the App shows an in-app consent dialog that lists exactly what is sent and to whom. You must explicitly accept this dialog to use AI-powered features.</p>
+    <p><strong>What is sent and to whom:</strong></p>
+    <ul>
+      <li><strong>OpenAI (United States)</strong> — Used for Instant Translation AI scoring and Japanese Diary correction. We send the transcribed Japanese text of your answer / diary entry and the prompt context. We do not send your email, name, or any other directly identifying information. We use OpenAI's API under terms that prohibit using your data to train OpenAI's general models. See <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI's Privacy Policy</a>.</li>
+      <li><strong>Microsoft Azure Speech Service (Japan East region)</strong> — Used for shadowing pronunciation evaluation. We send the audio you record (WAV, up to 30 seconds per attempt) and the reference text. Microsoft does not retain customer audio or use it to train Microsoft models per their commercial terms. See <a href="https://privacy.microsoft.com/" target="_blank" rel="noopener">Microsoft's Privacy Statement</a>.</li>
+      <li><strong>Apple Speech Recognition (on-device or via Apple servers)</strong> — Used to transcribe your spoken Japanese into text during Instant Translation, before any text is sent to OpenAI. This is the standard iOS Speech Recognition framework. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</li>
+    </ul>
+    <p><strong>What is NOT sent:</strong> We do not send your email address, real name, profile photo, or any personally identifying account ID to these AI services.</p>
+    <p><strong>Withdrawing consent:</strong> If you no longer wish your data to be processed by these AI services, you can simply stop using the AI-powered features, or delete your account (see Section 5). The consent record itself is stored only on our backend and is removed when you delete your account.</p>
+
+    <h2>4. Other Third-Party Services</h2>
+    <p>The App also relies on the following providers for non-AI infrastructure. Please review their privacy policies:</p>
     <ul>
       <li><strong>Supabase</strong> — database, authentication, and serverless functions. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></li>
-      <li><strong>OpenAI</strong> — AI scoring and corrections. Your transcribed answer text is sent to OpenAI's API for processing. <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></li>
       <li><strong>Adapty</strong> — subscription management. <a href="https://adapty.io/privacy" target="_blank" rel="noopener">adapty.io/privacy</a></li>
       <li><strong>Google / Apple</strong> — OAuth sign-in and in-app purchases.</li>
     </ul>
-    <p>We do not sell your personal information to third parties.</p>
 
-    <h2>4. Data Storage and Deletion</h2>
-    <p>Your data is stored securely on Supabase's cloud infrastructure (regions managed by Supabase). You can delete your account and all associated data at any time from <strong>My Page → Sign Out → contact us</strong>, or by emailing <a href="mailto:support@perapera.today">support@perapera.today</a>.</p>
+    <h2>5. Data Storage and Deletion</h2>
+    <p>Your account data is stored securely on Supabase's cloud infrastructure. Practice audio data sent to Microsoft Azure is not retained by Microsoft per their commercial terms; text data sent to OpenAI is similarly not retained for training. You can delete your account and all associated data at any time from <strong>My Page → Account → Delete account</strong> inside the app, or by emailing <a href="mailto:support@perapera.today">support@perapera.today</a>.</p>
 
-    <h2>5. Data Security</h2>
+    <h2>6. Data Security</h2>
     <ul>
       <li>All data is transmitted over HTTPS / TLS.</li>
       <li>Database access is restricted with row-level security (RLS); each user can only read and write their own records.</li>
       <li>API keys for third-party services are kept on the server side, never exposed to the client.</li>
     </ul>
 
-    <h2>6. Children's Privacy</h2>
+    <h2>7. Children's Privacy</h2>
     <p>The App is not directed to children under 13 (or under 16 in the EEA). We do not knowingly collect personal information from children. If you believe we have inadvertently collected such data, please contact us and we will delete it promptly.</p>
 
-    <h2>7. Your Rights (GDPR / CCPA)</h2>
+    <h2>8. Your Rights (GDPR / CCPA)</h2>
     <p>If you are a resident of the European Economic Area (EEA), United Kingdom, or California, you have the right to:</p>
     <ul>
       <li>Access the personal data we hold about you.</li>
@@ -95,10 +106,10 @@
     </ul>
     <p>To exercise any of these rights, email <a href="mailto:support@perapera.today">support@perapera.today</a>.</p>
 
-    <h2>8. Changes to This Policy</h2>
+    <h2>9. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Material changes will be announced in-app or via email. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
 
-    <h2>9. Contact</h2>
+    <h2>10. Contact</h2>
     <p>For privacy-related questions or requests, please contact us at <a href="mailto:support@perapera.today">support@perapera.today</a> or via the <a href="contact.html">contact page</a>.</p>
   </div>
 </body>
