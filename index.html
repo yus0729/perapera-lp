@@ -302,13 +302,12 @@
       border-radius: 28px;
       box-shadow: 0 22px 50px rgba(23, 32, 38, 0.16);
     }
-    .showcase-flex {
-      display: flex;
-      align-items: center;
-      gap: 28px;
+    .brand-showcase {
+      display: grid;
+      place-items: center;
     }
     .phone-frame {
-      flex: 0 0 236px;
+      width: 252px;
       padding: 10px;
       border-radius: 36px;
       background: #172026;
@@ -318,18 +317,6 @@
       display: block;
       width: 100%;
       border-radius: 27px;
-    }
-    /* フォンフレーム併置時: カードの階段字下げを解除し、枠内で折り返せるように */
-    .showcase-flex .concept-stack {
-      flex: 1;
-      min-width: 0;
-    }
-    .showcase-flex .concept-card:nth-child(2),
-    .showcase-flex .concept-card:nth-child(3) {
-      margin-left: 0;
-    }
-    .showcase-flex .concept-card > div {
-      min-width: 0;
     }
     .concept-stack {
       position: relative;
@@ -695,8 +682,6 @@
         grid-template-columns: 1fr;
       }
       .hero-art { min-height: auto; }
-      .showcase-flex { flex-direction: column; }
-      .phone-frame { flex-basis: auto; width: 216px; }
       .proof-grid,
       .steps {
         grid-template-columns: repeat(2, 1fr);
@@ -770,33 +755,8 @@
 
         <div class="hero-art" aria-label="Perapera app home screen and learning flow">
           <div class="brand-showcase">
-            <div class="showcase-flex">
             <div class="phone-frame">
               <img src="screen-home-20260811.jpg" alt="Perapera home screen: daily photo of Japan, daily study goal progress, streak, and practice menu" loading="lazy">
-            </div>
-            <div class="concept-stack">
-              <div class="concept-card">
-                <div class="mini-mark">1</div>
-                <div>
-                  <b>Speak from a real prompt</b>
-                  <span>Travel, daily life, work, school, and culture</span>
-                </div>
-              </div>
-              <div class="concept-card">
-                <div class="mini-mark">2</div>
-                <div>
-                  <b>Hear natural Japanese</b>
-                  <span>Shadow native phrases and build rhythm</span>
-                </div>
-              </div>
-              <div class="concept-card">
-                <div class="mini-mark">3</div>
-                <div>
-                  <b>Improve with feedback</b>
-                  <span>Grammar, naturalness, clarity, and politeness</span>
-                </div>
-              </div>
-            </div>
             </div>
           </div>
         </div>
