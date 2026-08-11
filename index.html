@@ -319,6 +319,18 @@
       width: 100%;
       border-radius: 27px;
     }
+    /* フォンフレーム併置時: カードの階段字下げを解除し、枠内で折り返せるように */
+    .showcase-flex .concept-stack {
+      flex: 1;
+      min-width: 0;
+    }
+    .showcase-flex .concept-card:nth-child(2),
+    .showcase-flex .concept-card:nth-child(3) {
+      margin-left: 0;
+    }
+    .showcase-flex .concept-card > div {
+      min-width: 0;
+    }
     .concept-stack {
       position: relative;
       z-index: 1;
